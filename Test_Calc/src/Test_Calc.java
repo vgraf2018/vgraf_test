@@ -33,7 +33,7 @@ public class Test_Calc {
     // Метод парсинга входной строки (String) в массив строк (String[])
     // Output: [0] - первое число, [1] - второе число, [2] - знак
 
-    public static <split> String[] parseSeq(String in) {
+    public static String[] parseSeq(String in) {
         in = in.replaceAll("\\s", "");             // Минус все пробелы
         char[] inArray = in.toCharArray();                          // В массив символов, чтобы потом получить знак
         String[] split = in.split("\\+|-|\\*|/");             // Минус все разрешенные знаки операций
@@ -44,11 +44,8 @@ public class Test_Calc {
             throw new RuntimeException("Invalid input: can't recognize correct operation sign");
 
         String sign = String.valueOf(inArray[len]);                 // Знак равен следующему char за 1 числом
-        String[] result = new String[]{split[0], split[1], sign};
-        //System.out.println("log: result array: " + Arrays.toString(result));
-        return result;
+        return new String[]{split[0], split[1], sign};
     }
-
 
     public static String calc(String input) {
         String[] Data = parseSeq(input);                //получаем 1 и 2 число и знак
